@@ -1,163 +1,184 @@
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, StatusBar, Alert } from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+  Alert,
+} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { imagemLogo, imagemLogoBR, logoProEpi, logoUnB } from '../../imgs/imageConst';
+import {
+  imagemLogo,
+  imagemLogoBR,
+  logoProEpi,
+  logoUnB,
+} from '../../imgs/imageConst';
 import translate from '../../../locales/i18n';
 import LinearGradient from 'react-native-linear-gradient';
-import { scale } from '../../utils/scallingUtils';
+import {scale} from '../../utils/scallingUtils';
 
 const Redirect = (titulo, message, navigation) => {
-    Alert.alert(
-        `${titulo}`,
-        `${message}`,
-        [
-            { text: "Cancelar", onPress: () => navigation.navigate('TelaInicial'), style: 'cancel' },
-            { text: "Ok", onPress: () => navigation.navigate('Registrar') }
-        ]
-    )
-}
+  Alert.alert(`${titulo}`, `${message}`, [
+    {
+      text: 'Cancelar',
+      onPress: () => navigation.navigate('TelaInicial'),
+      style: 'cancel',
+    },
+    {text: 'Ok', onPress: () => navigation.navigate('Registrar')},
+  ]);
+};
 
 class TelaInicial extends Component {
-    constructor(props) {
-        super(props);
-        //this._loadInitialState();
+  constructor(props) {
+    super(props);
+    //this._loadInitialState();
+  }
+
+  static navigationOptions = {
+    header: null,
+  };
+
+  //Funcao responsavel por verificar se o usuario está logado e ser redirecionado automaticamente para Home
+  _loadInitialState = async () => {
+    let UserID = await AsyncStorage.getItem('userID');
+    this.props.navigation.navigate(UserID ? 'BottomMenu' : 'Cadastro');
+  };
+
+  render() {
+    const {navigate} = this.props.navigation;
+    const statusColor = <StatusBar backgroundColor="#348EAC" />;
+
+    const logoBR = <Image style={styles.imageLogo} source={imagemLogoBR} />;
+
+    const logoES = <Image style={styles.imageLogo} source={imagemLogo} />;
+
+    let imageType;
+    if (translate('initialscreen.title') === 'Guardianes de la Salud') {
+      imageType = logoES;
+    } else {
+      imageType = logoBR;
     }
 
-    static navigationOptions = {
-        header: null,
-    }
-
-    //Funcao responsavel por verificar se o usuario está logado e ser redirecionado automaticamente para Home
-    _loadInitialState = async () => {
-        let UserID = await AsyncStorage.getItem('userID');
-        this.props.navigation.navigate(UserID ? 'BottomMenu' : 'Cadastro');
-    }
-
-
-    render() {
-        const { navigate } = this.props.navigation
-        const statusColor = (<StatusBar backgroundColor='#348EAC' />)
-
-        const logoBR = (
-            <Image style={styles.imageLogo} source={imagemLogoBR} />
-        )
-
-        const logoES = (
-            <Image style={styles.imageLogo} source={imagemLogo} />
-        )
-
-        let imageType;
-        if (translate("initialscreen.title") === "Guardianes de la Salud") {
-            imageType = logoES
-        }
-        else {
-            imageType = logoBR
-        }
-
-        return (
-            <LinearGradient style={styles.container} colors={['#348EAC', '#013444']} start={{ x: 1.5, y: 0.6 }} end={{ x: -0.2, y: 1.4 }}>
-                {statusColor}
-                <View style={styles.viewImage}>
-                    {imageType}
-                    <View style={styles.viewLogos}>
-                        <View style={styles.viewHalfLogos}><Image style={styles.imageHalfLogo} source={logoProEpi} /></View>
-                        <View style={styles.viewHalfLogos}><Image style={styles.imageHalfLogo} source={logoUnB} /></View>
-                    </View>
-                </View>
-                <View style={styles.viewButton}>
-                    <View style={styles.viewChildRegistar}>
-                        <TouchableOpacity onPress={() => Redirect(textos.tituloTermosDeUso, textos.mensagem, navigation = this.props.navigation)}>
-                            <Text style={styles.textButton}>REGISTRAR</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.viewChildEntrar}>
-                        <TouchableOpacity onPress={() => navigate('Login')}>
-                            <Text style={styles.textButton}>ENTRAR</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </LinearGradient>
-        );
-    }
+    return (
+      <LinearGradient
+        style={styles.container}
+        colors={['#348EAC', '#013444']}
+        start={{x: 1.5, y: 0.6}}
+        end={{x: -0.2, y: 1.4}}>
+        {statusColor}
+        <View style={styles.viewImage}>
+          {imageType}
+          <View style={styles.viewLogos}>
+            <View style={styles.viewHalfLogos}>
+              <Image style={styles.imageHalfLogo} source={logoProEpi} />
+            </View>
+            <View style={styles.viewHalfLogos}>
+              <Image style={styles.imageHalfLogo} source={logoUnB} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.viewButton}>
+          <View style={styles.viewChildRegistar}>
+            <TouchableOpacity
+              onPress={() =>
+                Redirect(
+                  textos.tituloTermosDeUso,
+                  textos.mensagem,
+                  (navigation = this.props.navigation),
+                )
+              }>
+              <Text style={styles.textButton}>REGISTRAR</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.viewChildEntrar}>
+            <TouchableOpacity onPress={() => navigate('Login')}>
+              <Text style={styles.textButton}>ENTRAR</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </LinearGradient>
+    );
+  }
 }
 
 // define your styles
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    viewImage: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: scale(100),
-        marginBottom: scale(120),
-        //borderWidth: 1,
-        //borderColor: "yellow",
-    },
-    imageLogo: {
-        flex: 1,
-        width: '85%',
-        resizeMode: "contain"
-    },
-    viewButton: {
-        alignSelf: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '85%',
-        height: '10%',
-        marginTop: 10,
-        marginBottom: 30,
-    },
-    viewChildEntrar: {
-        width: '49.5%',
-        borderTopRightRadius: 90,
-        borderBottomRightRadius: 90,
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        borderColor: 'white',
-        borderWidth: 1
-    },
-    viewChildRegistar: {
-        width: '49.5%',
-        borderTopLeftRadius: 90,
-        borderBottomLeftRadius: 90,
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        borderColor: 'white',
-        borderWidth: 1
-    },
-    textButton: {
-        fontFamily: 'roboto',
-        color: '#013444',
-        fontSize: 17,
-        alignSelf: 'center',
-        fontWeight: 'bold'
-    },
-    viewLogos: {
-        flexDirection: "row",
-        height: scale(100),
-        width: "80%",
-        //borderColor: "red",
-        //borderWidth: 1,
-    },
-    viewHalfLogos: {
-        alignItems: "center",
-        justifyContent: "center",
-        width: "50%",
-        height: "100%",
-        //borderColor: "green",
-        //borderWidth: 1,
-    },
-    imageHalfLogo: {
-        width: scale(90),
-        resizeMode: 'contain',
-    },
+  container: {
+    flex: 1,
+  },
+  viewImage: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: scale(100),
+    marginBottom: scale(120),
+    //borderWidth: 1,
+    //borderColor: "yellow",
+  },
+  imageLogo: {
+    flex: 1,
+    width: '85%',
+    resizeMode: 'contain',
+  },
+  viewButton: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '85%',
+    height: '10%',
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  viewChildEntrar: {
+    width: '49.5%',
+    borderTopRightRadius: 90,
+    borderBottomRightRadius: 90,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderColor: 'white',
+    borderWidth: 1,
+  },
+  viewChildRegistar: {
+    width: '49.5%',
+    borderTopLeftRadius: 90,
+    borderBottomLeftRadius: 90,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderColor: 'white',
+    borderWidth: 1,
+  },
+  textButton: {
+    fontFamily: 'roboto',
+    color: '#013444',
+    fontSize: 17,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+  },
+  viewLogos: {
+    flexDirection: 'row',
+    height: scale(100),
+    width: '80%',
+    //borderColor: "red",
+    //borderWidth: 1,
+  },
+  viewHalfLogos: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '50%',
+    height: '100%',
+    //borderColor: "green",
+    //borderWidth: 1,
+  },
+  imageHalfLogo: {
+    width: scale(90),
+    resizeMode: 'contain',
+  },
 });
 
-
 const textos = {
-    tituloTermosDeUso: 'Termos de uso',
-    mensagem: `Por favor, leia estes termos legais de uso antes de usar o aplicativo "Guardiões da Saúde”. Para realizar qualquer colaboração, acesse ou baixe qualquer informação deste aplicativo. Ao acessar ou usar o aplicativo "Guardiões da Saúde", você aceita e concorda em obedecer aos termos e condições estabelecidos nos "Termos de Uso". Esses termos consistem em um contrato de colaboração entre você e o aplicativo "Guardiões da Saúde", que abrange todo o seu acesso e uso, que inclui o uso de todas as informações, dados, ferramentas, produtos, serviços e outros conteúdos disponíveis no aplicativo. Ao usar este aplicativo, você confirma que entende e concorda com as seguintes condições:
+  tituloTermosDeUso: 'Termos de uso',
+  mensagem: `Por favor, leia estes termos legais de uso antes de usar o aplicativo "Guardiões da Saúde”. Para realizar qualquer colaboração, acesse ou baixe qualquer informação deste aplicativo. Ao acessar ou usar o aplicativo "Guardiões da Saúde", você aceita e concorda em obedecer aos termos e condições estabelecidos nos "Termos de Uso". Esses termos consistem em um contrato de colaboração entre você e o aplicativo "Guardiões da Saúde", que abrange todo o seu acesso e uso, que inclui o uso de todas as informações, dados, ferramentas, produtos, serviços e outros conteúdos disponíveis no aplicativo. Ao usar este aplicativo, você confirma que entende e concorda com as seguintes condições:
 
 
     1. RESPEITO AS LEIS 
@@ -230,8 +251,8 @@ const textos = {
     
     O acesso ao serviço representa a aceitação expressa e irrestrita dos Termos de Uso descritos acima. Ao concordar com estes termos, você concede uma licença perpétua, isenta de royalties, licença incondicional para o aplicativo "Guardiões da Saúde" e todas as organizações sucessoras, para publicar sua contribuição de forma agregada, no próprio aplicativo, bem como divulgá-los aos serviços de vigilância de saúde pública relacionados. Você também concorda que o aplicativo "Guardiões da Saúde" tem o direito, mas não a obrigação, de editar ou remover qualquer contribuição a critério exclusivo da equipe do aplicativo. 
     `,
-    ifYes: 'Registrar',
-    ifNo: 'TelaInicial'
-}
+  ifYes: 'Registrar',
+  ifNo: 'TelaInicial',
+};
 
 export default TelaInicial;

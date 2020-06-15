@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {SafeAreaView} from 'react-native';
+import {View} from 'react-native';
 import * as Navegar from './src/components/navigation/navigator';
 import OneSignal from 'react-native-onesignal'; // Import package from node modules
 
@@ -38,9 +38,9 @@ class Guardioes extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#348EAC'}}>
         <Navegar.Authentication />
-      </SafeAreaView>
+      </View>
     );
   }
 }

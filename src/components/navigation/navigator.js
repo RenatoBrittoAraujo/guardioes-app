@@ -58,7 +58,7 @@ export const Cadastro = createStackNavigator(
 
 export const BottomMenu = createBottomTabNavigator(
   {
-    Início,
+    InicioNewPage,
     Registros,
     Mapa: {screen: Maps},
     Conselho,

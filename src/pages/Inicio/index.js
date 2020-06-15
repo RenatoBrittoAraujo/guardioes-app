@@ -1,12 +1,15 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
-import {Container} from './styles';
+import {Container, Background} from './styles';
 
 export default function Inicio() {
   return (
-    <Container>
-      <Text>Guardiões da Saúde</Text>
-    </Container>
+    <>
+      <SafeAreaView backgroundColor="#348EAC" />
+      <Container>
+        <Background />
+      </Container>
+    </>
   );
 }

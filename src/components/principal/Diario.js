@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet, Image} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
@@ -160,7 +167,7 @@ class Diario extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.Top}>
             <View style={styles.userAvatar}>
@@ -241,7 +248,7 @@ class Diario extends Component {
             />
           </View>
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }

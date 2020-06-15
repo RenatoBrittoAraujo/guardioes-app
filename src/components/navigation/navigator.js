@@ -1,5 +1,5 @@
 import React from 'react';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 import {scale} from '../../utils/scallingUtils';
 import {
   createDrawerNavigator,
@@ -29,7 +29,9 @@ import TermosPoliticas from '../principal/TermosPoliticas';
 import Rumor from '../principal/Rumor';
 import Sobre from '../principal/Sobre';
 
-FontAwesome.loadFont();
+import InicioNewPage from '../../pages/Inicio';
+
+Feather.loadFont();
 
 export const Cadastro = createStackNavigator(
   {
@@ -63,16 +65,14 @@ export const BottomMenu = createBottomTabNavigator(
     Noticias,
   },
   {
-    initialRouteName: 'Início',
+    initialRouteName: 'InicioNewPage',
     navigationOptions: ({navigation}) => ({
       tabBarIcon: ({tintColor}) => {
         const {routeName} = navigation.state;
         let iconName;
-        if (routeName === 'Início') {
+        if (routeName === 'InicioNewPage') {
           iconName = 'home';
-          return (
-            <FontAwesome name={iconName} size={scale(30)} color={tintColor} />
-          );
+          return <Feather name={iconName} size={scale(30)} color={tintColor} />;
         } else if (routeName === 'Registros') {
           iconName = 'clipboard';
         } else if (routeName === 'Mapa') {
@@ -80,14 +80,12 @@ export const BottomMenu = createBottomTabNavigator(
         } else if (routeName === 'Conselho') {
           iconName = 'heart';
         } else if (routeName === 'Noticias') {
-          iconName = 'envelope';
+          iconName = 'message-square';
         }
 
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
-        return (
-          <FontAwesome name={iconName} size={scale(25)} color={tintColor} />
-        );
+        return <Feather name={iconName} size={scale(25)} color={tintColor} />;
       },
     }),
     tabBarOptions: {

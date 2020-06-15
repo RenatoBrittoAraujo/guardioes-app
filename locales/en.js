@@ -1,4 +1,7 @@
 export default {
+    "lang": {
+        "code": "en"
+    },
     "genderChoices": {
         "male": "Male",
         "female": "Female"
@@ -19,15 +22,15 @@ export default {
     },
     "initialscreen": {
         "title": "Guardiões da Saúde",
-        "welcome": "Welcome!",
+        "welcome": "Welcome",
         "subwelcome": "Ready to become a Health Guardian?",
         "signup": "Sign up",
         "login": "Login"
     },
     "login": {
         "title": "Login",
-        "email": "Email:",
-        "password": "Password:",
+        "email": "Email",
+        "password": "Password",
         "loginbutton": "Login",
         "connectWithFacebook": "Login with Facebook",
         "facebookLogin": {

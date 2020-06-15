@@ -32,7 +32,7 @@ let minDate = d + "-" + m + "-" + (y - 13) ;
 
 class Registrar extends Component {
     static navigationOptions = {
-        title: translate("register.title")
+        header: null,
     }
     constructor(props) {
         super(props);
@@ -229,6 +229,9 @@ class Registrar extends Component {
                         <CheckBox
                             title={"Faz parte do Grupo de Risco?"}
                             checked={this.state.riskGroup}
+                            iconType="feather"
+                            checkedIcon='check-circle'
+                            uncheckedIcon='circle'
                             containerStyle={styles.CheckBoxStyle}
                             size={scale(16)}
                             onPress={() => {

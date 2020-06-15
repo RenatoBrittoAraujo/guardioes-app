@@ -26,9 +26,12 @@
     "react-native-maps": "0.27.0",
     "react-native-modal-selector": "^2.0.0",
     "react-native-onesignal": "^3.6.5",
+    "react-native-simple-shadow-view": "^1.6.3",
+    "react-native-spinkit": "^1.5.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^9.0.0",
-    "react-navigation": "^2.9.3"
+    "react-navigation": "^2.9.3",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

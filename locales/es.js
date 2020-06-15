@@ -1,4 +1,7 @@
 export default {
+    "lang": {
+        "code": "es"
+    },
     "genderChoices": {
         "male": "Masculino",
         "female": "Femenino"
@@ -26,8 +29,8 @@ export default {
     },
     "login": {
         "title": "Entrar",
-        "email": "Email:",
-        "password": "Contraseña:",
+        "email": "Email",
+        "password": "Contraseña",
         "loginbutton": "Entrar",
         "connectWithFacebook": "Conectar con Facebook",
         "facebookLogin": {

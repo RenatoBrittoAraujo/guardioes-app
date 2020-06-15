@@ -38,7 +38,7 @@ export const Cadastro = createStackNavigator({
         navigationOptions: {
             headerTintColor: '#ffffff',
             headerStyle: {
-                backgroundColor: '#04617E',
+                backgroundColor: '#000',
                 elevation: 10,
             },
             headerTitleStyle: {
@@ -103,7 +103,7 @@ export const Stack = createStackNavigator({
         navigationOptions: {
             headerTintColor: '#ffffff',
             headerStyle: {
-                backgroundColor: '#04617E',
+                backgroundColor: '#fff',
                 elevation: 10,
 
             },

@@ -15,6 +15,22 @@ export const Background = styled(LinearGradient).attrs({
   flex: 1;
 `;
 
+export const NamesContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TextName = styled.Text`
+  font-weight: bold;
+  font-size: 22px;
+  color: white;
+`;
+
+export const AppName = styled.Text`
+  font-size: 18px;
+  color: white;
+`;
+
 export const StatusContainer = styled.View`
   background: white;
   border-radius: 20;
@@ -39,7 +55,7 @@ export const Text = styled.Text`
   margin-bottom: 20px;
 
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 export const StatusBemMal = styled.View`

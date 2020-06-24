@@ -2,7 +2,7 @@ language: android
 before_install:
   - nvm install 13
   - node --version
-  - openssl aes-256-cbc -K $encrypted_46cc22d23cb5_key -iv $encrypted_46cc22d23cb5_iv -in android/gds-upload-keystore.jks.enc -out android/gds-upload-keystore.jks -d
+  - openssl aes-256-cbc -K $encrypted_46cc22d23cb5_key -iv $encrypted_46cc22d23cb5_iv -in android/gds-upload-keystore.jks.enc -out android/app/gds-upload-keystore.jks -d
 install:
   - npm install
   - yes | sdkmanager "platforms;android-28"

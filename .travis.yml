@@ -2,10 +2,9 @@ language: android
 before_install:
 - nvm install 13
 - node --version
-before_install:
-  - yes | sdkmanager "platforms;android-29"
 install:
-- npm install
+  - yes | sdkmanager "platforms;android-29"
+  - npm install
 android:
   components:
   - build-tools-29.0.1

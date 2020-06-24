@@ -37,4 +37,3 @@ deploy:
   on:
     repo: RenatoBrittoAraujo/guardioes-app
     branch: feature/ci-travis
-  skip_cleanup: 'true'

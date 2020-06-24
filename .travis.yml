@@ -1,8 +1,7 @@
 language: android
-dist: pie
 before_install:
-- nvm install 13
-- node --version
+  - nvm install 13
+  - node --version
 install:
   - npm install
   - yes | sdkmanager "platforms;android-28"
@@ -15,7 +14,7 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-16
 script:
-- cd android && ./gradlew assembleRelease
+  - cd android && ./gradlew assembleRelease
 deploy:
   provider: releases
   api_key:

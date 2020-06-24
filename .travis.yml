@@ -3,8 +3,8 @@ before_install:
 - nvm install 13
 - node --version
 install:
-  - yes | sdkmanager "platforms;android-29"
   - npm install
+  - yes | ~/Android/Sdk/tools/bin/sdkmanager "platforms;android-29"
 android:
   components:
   - build-tools-29.0.1

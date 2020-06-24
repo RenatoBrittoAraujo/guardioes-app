@@ -19,7 +19,7 @@ android:
   - addon-google_apis-google-16
 script:
   - cd android && ./gradlew assembleRelease
-  - cp app/build/outputs/apk/app-release.apk ..
+  - cp app/build/outputs/apk/release/app-release.apk ..
   - cd ..
   - ls
   - ls android
@@ -27,6 +27,7 @@ script:
   - ls android/app/build/
   - ls android/app/build/outputs/
   - ls android/app/build/outputs/apk/
+  - ls android/app/build/outputs/apk/release
 after_success:
 deploy:
   provider: releases

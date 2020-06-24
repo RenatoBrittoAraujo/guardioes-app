@@ -19,7 +19,8 @@ android:
   - addon-google_apis-google-16
 script:
   - cd android && ./gradlew assembleRelease
-  - cp android/app/build/outputs/apk/app-release.apk .
+  - cp app/build/outputs/apk/app-release.apk ..
+  - cd ..
   - ls
   - ls android
   - ls android/app/

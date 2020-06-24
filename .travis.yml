@@ -33,7 +33,7 @@ deploy:
   provider: releases
   api_key:
     secure: KY3aD1tRT89JvZ5KWzvoHFL4x0ajC17aREvZcC0ZwHgBtr2t+YwCSFSOzAXqZxjEYy3EnzmQaR0ZJ7kxIzvy1PwbbgJc485QZfpgVGYodgm+T3Asoq/abW1CCnRR5/gs0fqUD8EqJMU2cLQ4ciaeu3NGTEh7jfTq7nkN/8v/+4rOGJrQjClmo0Q4J8l0Cf6qCMSKIYIDz76DgyPumyw4eJMmPiuPhnYSLuyMIrI28+hDOhV7a2N/VErX6u8tlPXz+e3veDbaRsx23IlILC4P9FxjxQzgK+77/URBj2cq08ZAKzvC5DebcjzQyZgxd8QSmaO+mX0D+rxNLp54Li1dkM9XiCbc4qx1XIusWgu7eLJNh1xcMPq/JkWFD3sD2coGW25yV7yZQQMERvsiU4vsK0vxGrn4eyoY8OS+SnvX9kJJACp/HeQPJGPsgVHnPGPJHGu5AhPXsBtyo0LtiQMcQ2/BIQQ259hv15xk9/kTsrORuP0VOJ4tV9gaOmM6dWF6FCjSitphpdn6iICEfCNkk81/XN659VTckcVtga+V28uj2moRSK1wjYIgB1Tklvav21dNYgM7k7o31p15Rxggu+teDO/GaAM8xpNW9Ux3RHeYu2Y85u1YjgcPkNU3KN2kmx/Av6OYPzPrUOh8DQcS5pq842IyUYUzgj0/eA8+QC0=
-  file: "android/app/build/outputs/apk/app-release.apk"
+  file: "app-release.apk"
   on:
     repo: RenatoBrittoAraujo/guardioes-app
     branch: feature/ci-travis

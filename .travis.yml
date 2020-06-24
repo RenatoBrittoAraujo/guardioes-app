@@ -6,7 +6,8 @@ install:
   - npm install
   - yes | sdkmanager "platforms;android-28"
   - touch .env
-  - echo "API_URL=http://gds.proepi.org.br\nAPP_ID=1" > .env
+  - echo "API_URL=http://gds.proepi.org.br" > .env
+  - echo "APP_ID=1" >> .env
 android:
   components:
   - build-tools-29.0.1
